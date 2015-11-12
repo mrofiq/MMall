@@ -1,0 +1,22 @@
+{% extends "ecommerce/base.html" %}
+{% block content %}
+    <div class="row">
+    <div class="col-md-4">
+<table class="table">
+    <tr>
+        <td></td>
+        <td>Produk</td>
+        <td>Harga</td>
+    </tr>
+    {% for p in products %}
+        <tr>
+            <td>{{ p.id }}</td>
+            <td><a href="{% url "ecommerce.views.detail" p.id %}">{{ p.title }}</a></td>
+            <td>{{ p.price }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+    </div>
+    </div>
+{% endblock %}
