@@ -61,3 +61,5 @@ target/
 
 db.sqlite3
 media
+bower_components
+static

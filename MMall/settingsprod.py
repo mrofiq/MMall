@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'a3$6!5b10x8yw*dx^nlz^hl7p)11nt)rdqxnm!d@8pu(ooxi6-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['localhost']
 
@@ -105,23 +105,22 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'bower_components'),
-)
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_URL = '/store/signin'
 
-#
-# Django Pipeline settings
-#
 STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
 
+# PIPELINE_CSS_COMPRESSOR = 'pipeline.compressors.NoopCompressor'
 PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.uglifyjs.UglifyJSCompressor'
 PIPELINE_COMPILERS = (
     'pipeline.compilers.es6.ES6Compiler',
+)
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'bower_components'),
 )
 
 STATICFILES_FINDERS = (
@@ -134,8 +133,10 @@ PIPELINE_JS = {
     'app': {
         'source_filenames': (
           'js/app.es6',
-            'js/component1.es6'
         ),
         'output_filename': 'js/app.js',
     },
 }
+
+#PIPELINE_BABEL_BINARY = '/Users/rofiq/.nvm/versions/node/v4.2.1/bin/babel'
+#PIPELINE_NODE_BINARY = '/Users/rofiq/.nvm/versions/node/v4.2.1/bin/node'

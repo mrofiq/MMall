@@ -1,3 +1,5 @@
+{% load staticfiles %}
+{% load pipeline %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +16,9 @@
 
         }
     </style>
+    <script src="{% static "react/react.min.js" %}"></script>
+    <script src="{% static "react/react-dom.js" %}"></script>
+    {% javascript 'app' %}
 </head>
 <body class="container">
 <div class="page-header">
@@ -29,6 +34,7 @@
             {% endif %}
         </div>
     </div>
+    <div id="example"></div>
 </div>
 {% block content %}
 {% endblock %}
